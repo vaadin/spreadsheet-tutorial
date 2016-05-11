@@ -58,11 +58,11 @@
 			<version>${vaadin.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory). 
-			For widgetset compilation, vaadin-client-compiler is automatically added 
-			on the compilation classpath by vaadin-maven-plugin so normally there is 
+		<!-- Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory).
+			For widgetset compilation, vaadin-client-compiler is automatically added
+			on the compilation classpath by vaadin-maven-plugin so normally there is
 			no need for an explicit dependency. -->
-		<!-- <dependency> <groupId>com.vaadin</groupId> <artifactId>vaadin-client-compiler</artifactId> 
+		<!-- <dependency> <groupId>com.vaadin</groupId> <artifactId>vaadin-client-compiler</artifactId>
 			<version>${vaadin.version}</version> <scope>provided</scope> </dependency> -->
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -72,7 +72,7 @@
 		<dependency>
 			<groupId>com.vaadin.addon</groupId>
 			<artifactId>vaadin-spreadsheet</artifactId>
-			<version>1.1.7</version>
+			<version>1.2.0.alpha1</version>
 		</dependency>
 	</dependencies>
 
