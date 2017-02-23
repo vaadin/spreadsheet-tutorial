@@ -30,8 +30,6 @@ import com.vaadin.ui.ColorPicker;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.components.colorpicker.ColorChangeEvent;
-import com.vaadin.ui.components.colorpicker.ColorChangeListener;
 
 /**
  * Final code produced by the Vaadin Spreadsheet Tutorial <br>
@@ -78,20 +76,13 @@ public class MyUI extends UI {
         });
         ColorPicker backgroundColor = new ColorPicker();
         backgroundColor.setCaption("Background Color");
-        backgroundColor.addColorChangeListener(new ColorChangeListener() {
-            @Override
-            public void colorChanged(ColorChangeEvent event) {
-                updateSelectedCellsBackgroundColor(event.getColor());
-            }
-        });
+        backgroundColor.addValueChangeListener(
+                event -> updateSelectedCellsBackgroundColor(event.getValue()));
         ColorPicker fontColor = new ColorPicker();
         fontColor.setCaption("Font Color");
-        fontColor.addColorChangeListener(new ColorChangeListener() {
-            @Override
-            public void colorChanged(ColorChangeEvent event) {
-                updateSelectedCellsFontColor(event.getColor());
-            }
-        });
+        fontColor.addValueChangeListener(
+                event -> updateSelectedCellsFontColor(event.getValue()));
+
         toolbar.addComponent(boldButton);
         toolbar.addComponent(backgroundColor);
         toolbar.addComponent(fontColor);
@@ -100,7 +91,7 @@ public class MyUI extends UI {
 
     private void updateSelectedCellsBold() {
         if (spreadsheet != null) {
-            List<Cell> cellsToRefresh = new ArrayList<Cell>();
+            List<Cell> cellsToRefresh = new ArrayList<>();
             for (CellReference cellRef : spreadsheet
                     .getSelectedCellReferences()) {
                 // Obtain Cell using CellReference
@@ -123,7 +114,7 @@ public class MyUI extends UI {
 
     private void updateSelectedCellsBackgroundColor(Color newColor) {
         if (spreadsheet != null && newColor != null) {
-            List<Cell> cellsToRefresh = new ArrayList<Cell>();
+            List<Cell> cellsToRefresh = new ArrayList<>();
             for (CellReference cellRef : spreadsheet
                     .getSelectedCellReferences()) {
                 // Obtain Cell using CellReference
@@ -146,7 +137,7 @@ public class MyUI extends UI {
 
     private void updateSelectedCellsFontColor(Color newColor) {
         if (spreadsheet != null && newColor != null) {
-            List<Cell> cellsToRefresh = new ArrayList<Cell>();
+            List<Cell> cellsToRefresh = new ArrayList<>();
             for (CellReference cellRef : spreadsheet
                     .getSelectedCellReferences()) {
                 Cell cell = getOrCreateCell(cellRef);
